@@ -4,7 +4,7 @@ const appReducer = (state, action) => {
             return {
                 ...state,
                 loggedIn: action.loggedIn,
-                userName: action.userName
+                email: action.email
             }
         case "UPDATE_CART":
             return {

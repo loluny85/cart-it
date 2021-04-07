@@ -36,7 +36,6 @@ const Login = (props) => {
   })
 
   const onSubmit = (data) => {
-    debugger
     fire
       .auth()
       .signInWithEmailAndPassword(data.email, data.password)
@@ -44,7 +43,7 @@ const Login = (props) => {
         dispatch({
           type: "LOGIN_STATUS",
           loggedIn: true,
-          email: 'TODO'
+          email: data.email
         })
         props.history.push(PRODUCTS)
       })
@@ -52,6 +51,9 @@ const Login = (props) => {
         console.log(err);
       });
   }
+
+  // TODO - Make responsive
+
 
   return (
     <Grid item xs={10} className={root}>

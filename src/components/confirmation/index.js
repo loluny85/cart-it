@@ -1,13 +1,13 @@
 import React from 'react';
 import BaseLayout from "../../layouts/BaseLayout"
-import Checkout from "./Checkout";
+import Confirmation from "./Confirmation";
 
-const CartPage = () => {
+const ConfirmationPage = () => {
     return (
         <BaseLayout>
-            <Checkout />
+            <Confirmation />
         </BaseLayout>
     );
 };
 
-export default CartPage;
+export default ConfirmationPage;
