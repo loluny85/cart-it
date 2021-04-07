@@ -55,33 +55,33 @@ const Products = () => {
       <CircularProgress />
     </Box>
   ) : (
-    <Grid container className={root}>
-      {products.map((product) => (
-        <Grid item xs={3} key={product.id} className={justifyCenter}>
-          <Card className={card}>
-            <CardMedia className={media} image={product.media.source} />
-            <Box className={justifySpaceBetween}>
-              <CardContent>
-                <Typography gutterBottom variant="h6">
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {product.price.formatted_with_code}
-                </Typography>
-              </CardContent>
-              <IconButton
-                color="primary"
-                aria-label="Add to shopping cart"
-                onClick={() => addItemToCart(product.id, 1)}
-              >
-                <AddShoppingCartIcon />
-              </IconButton>
-            </Box>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
-  );
+      <Grid container className={root}>
+        {products.map((product) => (
+          <Grid item xs={3} key={product.id} className={justifyCenter}>
+            <Card className={card}>
+              <CardMedia className={media} image={product.media.source} />
+              <Box className={justifySpaceBetween}>
+                <CardContent>
+                  <Typography gutterBottom variant="h6">
+                    {product.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {product.price.formatted_with_code}
+                  </Typography>
+                </CardContent>
+                <IconButton
+                  color="primary"
+                  aria-label="Add to shopping cart"
+                  onClick={() => addItemToCart(product.id, 1)}
+                >
+                  <AddShoppingCartIcon />
+                </IconButton>
+              </Box>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    );
 };
 
 export default withRouter(Products);

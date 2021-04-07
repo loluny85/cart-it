@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { AppContext } from '../../App'
-import { IconButton, Badge } from "@material-ui/core";
+import { IconButton, Badge, Typography, Box } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { withRouter, useLocation } from 'react-router-dom'
 import * as routes from '../../utils/routes'
 
 const MainCartIcon = (props) => {
   const { state, dispatch } = useContext(AppContext)
-  const { cart } = state;
+  const { cart, userName } = state;
 
   const { pathname } = useLocation()
   const { CART, CHECKOUT } = routes;
@@ -18,10 +18,14 @@ const MainCartIcon = (props) => {
   }
 
   return (
-    !hideMainCartIcon && <IconButton aria-label="cart" onClick={navigate}>
-      <Badge badgeContent={cart.length} color="secondary">
-        <ShoppingCartIcon />
-      </Badge>
+    <IconButton aria-label="cart" onClick={navigate}>
+      <Typography variant="h6">{userName}</Typography>
+      <Box mr={2}></Box>
+      {!hideMainCartIcon &&
+        <Badge badgeContent={cart.length} color="secondary">
+          <ShoppingCartIcon />
+        </Badge>
+      }
     </IconButton>
   );
 };
