@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { TextField, Box, Button, Typography, Grid } from "@material-ui/core"
+import { TextField, Box, Button, Typography, Grid, CircularProgress } from "@material-ui/core"
 import BaseLayout from "../../layouts/BaseLayout"
 import { useForm } from "react-hook-form"
 import useStyles from "./styles"
@@ -22,7 +22,8 @@ const MyComponent = (props) => {
     const { state } = useContext(AppContext)
     const { subTotal, email: loginEmail, cart, address: shippingAddress } = state
     const [error, setError] = useState("")
-    const { justifyCenter } = useCommonStyles()
+    const [loading, setLoading] = useState(false)
+    const { justifyCenter, buttonLoader } = useCommonStyles()
     const { paymentForm } = useStyles()
     const stripe = useStripe();
     const elements = useElements();
@@ -68,15 +69,17 @@ const MyComponent = (props) => {
     }
 
     const handleSubmit = async (event) => {
-        const url_post_order_details = 'https://orderdetails.free.beeceptor.com'
         event.preventDefault();
         setError("")
+        setLoading(true)
+        const url_post_order_details = 'https://orderdetails.free.beeceptor.com'
         const cardElement = elements.getElement(CardElement);
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card: cardElement,
         });
         if (error) {
+            setLoading(false)
             setError(error)
         }
         if (!error && paymentMethod) {
@@ -114,8 +117,9 @@ const MyComponent = (props) => {
                 }} />
                 <Box className={justifyCenter} mt={6}>
                     <p>{error ?.message}</p>
-                    <Button color="primary" variant="contained" type="submit" disabled={!stripe}>
-                        {`Pay ${subTotal}`}
+                    <Button color="primary" variant="contained" type="submit" disabled={!stripe || loading}>
+                        {loading && <CircularProgress size={25} className={buttonLoader} />}
+                        <Typography variant="h6">{`Pay ${subTotal}`}</Typography>
                     </Button>
                 </Box>
             </form>

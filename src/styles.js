@@ -26,6 +26,9 @@ const useCommonStyles = makeStyles((theme) => ({
   justifyEnd: {
     display: 'flex',
     justifyContent: 'flex-end'
+  },
+  buttonLoader: {
+    marginRight: theme.spacing(2)
   }
 }));
 

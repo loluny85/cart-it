@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import {
   Grid,
   CardMedia,
@@ -6,7 +6,8 @@ import {
   Button,
   Paper,
   Box,
-  TextField
+  TextField,
+  CircularProgress
 } from "@material-ui/core";
 import { AppContext } from "../../App";
 import { withRouter } from "react-router-dom";
@@ -21,8 +22,12 @@ import fire from "../../fire";
 
 const Login = (props) => {
   const { state, dispatch } = useContext(AppContext);
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState("")
+
   const {
-    alignCenter
+    alignCenter,
+    buttonLoader
   } = useCommonStyles();
   const { root, loginForm, loginFormContainer, textUnderline } = useStyles();
 
@@ -36,6 +41,8 @@ const Login = (props) => {
   })
 
   const onSubmit = (data) => {
+    setError("");
+    setLoading(true)
     fire
       .auth()
       .signInWithEmailAndPassword(data.email, data.password)
@@ -48,7 +55,8 @@ const Login = (props) => {
         props.history.push(PRODUCTS)
       })
       .catch((err) => {
-        console.log(err);
+        setLoading(false)
+        setError(err);
       });
   }
 
@@ -76,7 +84,13 @@ const Login = (props) => {
               {errors.password ?.type === "required" && <span>Password is required</span>}
               {errors.password ?.type === "min" && <span>Password too short</span>}
               <Box mt={3} />
-              <Button type="submit" size="large" color="primary" variant="contained">Login</Button>
+              <Button type="submit" size="large" color="primary" variant="contained" disabled={loading}>
+                {loading && <CircularProgress size={25} className={buttonLoader} />}
+                <Typography variant="h6">Login</Typography>
+              </Button>
+              <Box pr={3} pl={3} mt={3}>
+                <Typography color="error">{error ?.message}</Typography>
+              </Box>
             </form>
           </Paper>
         </Grid>

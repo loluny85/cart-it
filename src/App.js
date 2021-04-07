@@ -12,6 +12,7 @@ import initialState from "./store/initialState";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import * as routes from "./utils/routes";
 import ProtectedRoute from "./utils/ProtectedRoute"
+import { red } from '@material-ui/core/colors'
 import "./App.css";
 
 export const AppContext = createContext();
@@ -24,6 +25,9 @@ const theme = createMuiTheme({
     secondary: {
       main: "#3F3F3F",
     },
+    error: {
+      main: red[500]
+    }
   },
 });
 
@@ -37,12 +41,12 @@ function App() {
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path={LOGIN} component={Login} />
-            <Route path={ERROR} component={ERROR} />
+            <Route path={ERROR} component={Error} />
             <ProtectedRoute path={PRODUCTS} component={Products} />
             <ProtectedRoute path={CART} component={Cart} />
             <ProtectedRoute path={CHECKOUT_ADDRESS} component={Checkout} />
             <ProtectedRoute path={CHECKOUT_PAYMENT} component={Payment} />
-            <ProtectedRoute path={CONFIRMATION} component={Confirmation} />
+            <Route path={CONFIRMATION} component={Confirmation} />
           </Switch>
         </Router>
       </ThemeProvider>
