@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { AppContext } from "../../App";
 import { Link, withRouter } from "react-router-dom";
-import { PRODUCTS, CHECKOUT } from "../../utils/routes";
+import { PRODUCTS, CHECKOUT_ADDRESS } from "../../utils/routes";
 import { commerce } from "../../lib/commerce";
 import DeleteIcon from "@material-ui/icons/Delete";
 import useCommonStyles from "../../styles";
@@ -137,7 +137,7 @@ const Cart = (props) => {
         </Box>
         <Button
           component={Link}
-          to={CHECKOUT}
+          to={CHECKOUT_ADDRESS}
           color="primary"
           variant="contained"
         >

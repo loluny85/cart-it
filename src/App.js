@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Products from "./components/products";
 import Cart from "./components/cart";
 import Login from "./components/login";
-import Checkout from "./components/checkout";
+import Checkout from "./components/checkout/AddressForm";
+import Payment from "./components/checkout/PaymentForm";
+import Error from "./components/error";
+import Confirmation from "./components/confirmation";
 import appReducer from "./store/appReducer";
 import initialState from "./store/initialState";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -26,7 +29,7 @@ const theme = createMuiTheme({
 
 function App() {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const { LOGIN, PRODUCTS, CART, CHECKOUT } = routes;
+  const { LOGIN, PRODUCTS, CART, CHECKOUT_ADDRESS, CHECKOUT_PAYMENT, ERROR, CONFIRMATION } = routes;
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <ThemeProvider theme={theme}>
@@ -34,9 +37,12 @@ function App() {
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path={LOGIN} component={Login} />
+            <Route path={ERROR} component={ERROR} />
             <ProtectedRoute path={PRODUCTS} component={Products} />
             <ProtectedRoute path={CART} component={Cart} />
-            <ProtectedRoute path={CHECKOUT} component={Checkout} />
+            <ProtectedRoute path={CHECKOUT_ADDRESS} component={Checkout} />
+            <ProtectedRoute path={CHECKOUT_PAYMENT} component={Payment} />
+            <ProtectedRoute path={CONFIRMATION} component={Confirmation} />
           </Switch>
         </Router>
       </ThemeProvider>
