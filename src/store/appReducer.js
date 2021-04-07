@@ -6,6 +6,11 @@ const appReducer = (state, action) => {
                 loggedIn: action.loggedIn,
                 email: action.email
             }
+        case "LOGOUT_STATUS":
+            return {
+                ...state,
+                loggedIn: action.loggedIn
+            }
         case "UPDATE_CART":
             return {
                 ...state,

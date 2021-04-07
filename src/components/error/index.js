@@ -9,8 +9,9 @@ const ErrorPage = (props) => {
     }
     return (
         <BaseLayout>
+            {/* TODO - style this page */}
             Oops! Something went wrong
-            <Button variant="contained" color="primary" onclick={returnToPreviousPage}>Go Back</Button>
+            <Button variant="contained" color="primary" onClick={returnToPreviousPage}>Go Back</Button>
         </BaseLayout>
     );
 };
