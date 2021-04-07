@@ -10,9 +10,8 @@ const MainCartIcon = (props) => {
   const { cart, userName } = state;
 
   const { pathname } = useLocation()
-  const { CART, CHECKOUT } = routes;
-  const hideMainCartIcon = pathname === CART || pathname === CHECKOUT
-
+  const { PRODUCTS, CART } = routes;
+  const hideMainCartIcon = pathname !== PRODUCTS
   const navigate = () => {
     props.history.push(CART)
   }
