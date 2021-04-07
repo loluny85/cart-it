@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AppContext } from "../../App"
+import { AppContext } from "../../App";
 import { commerce } from "../../lib/commerce";
 import {
   Grid,
@@ -12,7 +12,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 import useStyles from "./styles";
 import useCommonStyles from "../../styles";
 
@@ -21,7 +21,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { root, card, media, progress } = useStyles();
-  const { justifyCenter, justifySpaceBetween } = useCommonStyles()
+  const { justifyCenter, justifySpaceBetween } = useCommonStyles();
 
   useEffect(() => {
     fetchProducts();
@@ -36,12 +36,12 @@ const Products = () => {
 
   const fetchCart = async () => {
     const cart = await commerce.cart.retrieve();
-    const { line_items, subtotal } = cart
+    const { line_items, subtotal } = cart;
     dispatch({
       type: "UPDATE_CART",
       cart: line_items,
-      subTotal: subtotal.formatted_with_code
-    })
+      subTotal: subtotal.formatted_with_code,
+    });
     setLoading(false);
   };
 
@@ -57,8 +57,8 @@ const Products = () => {
   ) : (
       <Grid container className={root}>
         {products.map((product) => (
-          <Grid item xs={3} className={justifyCenter}>
-            <Card className={card} key={product.id}>
+          <Grid item xs={3} key={product.id} className={justifyCenter}>
+            <Card className={card}>
               <CardMedia className={media} image={product.media.source} />
               <Box className={justifySpaceBetween}>
                 <CardContent>
@@ -84,4 +84,4 @@ const Products = () => {
     );
 };
 
-export default withRouter(Products)
+export default withRouter(Products);

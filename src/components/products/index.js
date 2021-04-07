@@ -2,7 +2,7 @@ import React from "react";
 import BaseLayout from "../../layouts/BaseLayout";
 import Products from "./Products";
 
-const HomePage = () => {
+const ProductsPage = () => {
   return (
     <BaseLayout>
       <Products />
@@ -10,4 +10,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ProductsPage;
