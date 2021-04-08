@@ -11,6 +11,11 @@ const useCommonStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: "center",
   },
+  alignCenterColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   justifySpaceBetween: {
     display: 'flex',
     justifyContent: 'space-between'
@@ -30,6 +35,7 @@ const useCommonStyles = makeStyles((theme) => ({
   buttonLoader: {
     marginRight: theme.spacing(2)
   }
+
 }));
 
 export default useCommonStyles;

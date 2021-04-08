@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     paymentForm: {
-        width: '80%'
+        width: '80%',
+        paddingTop: theme.spacing(3),
     }
 }));
 

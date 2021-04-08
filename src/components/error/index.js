@@ -1,17 +1,24 @@
 import React from 'react';
 import BaseLayout from '../../layouts/BaseLayout';
 import { withRouter } from 'react-router-dom'
-import { Button } from "@material-ui/core"
+import { Button, Grid, Typography, Box } from "@material-ui/core"
+import useCommonStyles from '../../styles';
 
 const ErrorPage = (props) => {
+    const { alignCenterColumn } = useCommonStyles()
     const returnToPreviousPage = () => {
         props.history.goBack()
     }
     return (
         <BaseLayout>
-            {/* TODO - style this page */}
-            Oops! Something went wrong
-            <Button variant="contained" color="primary" onClick={returnToPreviousPage}>Go Back</Button>
+            <Grid container>
+                <Grid item xs={12}>
+                    <Box mt={8} className={alignCenterColumn}>
+                        <Typography>Oops! Something went wrong</Typography>
+                        <Button variant="contained" color="secondary" onClick={returnToPreviousPage}>Go Back</Button>
+                    </Box>
+                </Grid>
+            </Grid>
         </BaseLayout>
     );
 };

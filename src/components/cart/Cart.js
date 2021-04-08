@@ -66,6 +66,7 @@ const Cart = (props) => {
   const ShowCartItems = () => (
     <>
       <Grid item xs={6} className={root}>
+        <Box mt={8} mb={4} className={justifyCenter}><Typography variant="h4">Shopping Cart</Typography></Box>
         <Grid container>
           {cart.map((item) => {
             return (
@@ -117,6 +118,7 @@ const Cart = (props) => {
             );
           })}
         </Grid>
+        <Box pb={4} />
       </Grid>
       <Grid
         item

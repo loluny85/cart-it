@@ -48,42 +48,42 @@ const AddressForm = (props) => {
     return (
         <BaseLayout>
             <Grid item xs={6}>
-                <Box mt={8} className={justifyCenter}><Typography variant="h4">Step 1/2: Address Details</Typography></Box>
+                <Box mt={8} className={justifyCenter}><Typography variant="h4">Checkout: Address Details</Typography></Box>
                 <form className={form} onSubmit={handleSubmit(onSubmit)}>
                     <Box width="75%">
                         <TextField variant="outlined" fullWidth={true} label="Full Name" value={address ?.fullName} inputProps={register("fullName")} />
-                        {errors.fullName ?.type === "required" && <p>Full name is required</p>}
-                        {errors.fullName ?.type === "min" && <p>Name is not valid</p>}
+                        {errors.fullName ?.type === "required" && <Typography color="error">Full name is required</Typography>}
+                        {errors.fullName ?.type === "min" && <Typography color="error">Name is not valid</Typography>}
                     </Box>
                     <Box mt={2} width="75%">
                         <TextField variant="outlined" fullWidth={true} label="Email" value={address ?.email} inputProps={register("email")} />
-                        {errors.email ?.type === "required" && <p>Emai is required</p>}
-                        {errors.email ?.type === "matches" && <p>Enter a valid email</p>}
+                        {errors.email ?.type === "required" && <Typography color="error">Email is required</Typography>}
+                        {errors.email ?.type === "matches" && <Typography color="error">Email is not valid</Typography>}
                     </Box>
                     <Box mt={2} width="75%">
                         <TextField type="number" variant="outlined" fullWidth={true} label="Phone" value={address ?.phone} inputProps={register("phone")} />
-                        {errors.phone ?.type === "required" && <p>Phone is required</p>}
+                        {errors.phone ?.type === "required" && <Typography color="error">Phone is required</Typography>}
                     </Box>
                     <Box mt={2} width="75%">
                         <TextField variant="outlined" fullWidth={true} label="Street" value={address ?.street} inputProps={register("street")} />
-                        {errors.street ?.type === "required" && <p>Street is required</p>}
-                        {errors.street ?.type === "min" && <p>Street is not valid</p>}
+                        {errors.street ?.type === "required" && <Typography color="error">Street is required</Typography>}
+                        {errors.street ?.type === "min" && <Typography color="error">Street is not valid</Typography>}
                     </Box>
                     <Box mt={2} width="75%">
                         <TextField variant="outlined" fullWidth={true} label="City" value={address ?.city} inputProps={register("city")} />
-                        {errors.city ?.type === "required" && <p>City is required</p>}
-                        {errors.city ?.type === "min" && <p>City is not valid</p>}
+                        {errors.city ?.type === "required" && <Typography color="error">City is required</Typography>}
+                        {errors.city ?.type === "min" && <Typography color="error">City is required</Typography>}
                     </Box>
                     <Box mt={2} width="75%">
                         <TextField variant="outlined" fullWidth={true} label="Country" value={address ?.country} inputProps={register("country")} />
-                        {errors.country ?.type === "required" && <p>Country is required</p>}
-                        {errors.country ?.type === "min" && <p>Country is not valid</p>}
+                        {errors.country ?.type === "required" && <Typography color="error">Country is required</Typography>}
+                        {errors.country ?.type === "min" && <Typography color="error">Country is not valid</Typography>}
                     </Box>
                     <Box mt={2} width="75%">
                         <TextField type="number" variant="outlined" fullWidth={true} label="Zipcode" value={address ?.zipCode} inputProps={register("zipCode")} />
-                        {errors.zipCode ?.type === "required" && <p>Zipcode is required</p>}
-                        {errors.zipCode ?.type === "min" && <p>Zipcode must be 5 digits</p>}
-                        {errors.zipCode ?.type === "matches" && <p>Zipcode must be a number only</p>}
+                        {errors.zipCode ?.type === "required" && <Typography color="error">Zipcode is required</Typography>}
+                        {errors.zipCode ?.type === "min" && <Typography color="error">Zipcode must be 5 digits</Typography>}
+                        {errors.zipCode ?.type === "matches" && <Typography color="error">Zipcode must be a number only</Typography>}
                     </Box>
                     <Box mt={3} className={JustifyEnd}>
                         <Button type="submit" variant="contained" color="primary">Next</Button>
