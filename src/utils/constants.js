@@ -1,0 +1,1 @@
+export const URL_POST_ORDER_DETAILS = "https://orderdetails.free.beeceptor.com"

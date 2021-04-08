@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { TextField, Box, Button, Typography, Grid, CircularProgress } from "@material-ui/core"
+import React, { useContext, useState } from 'react';
+import { Box, Button, Typography, Grid, CircularProgress, Paper } from "@material-ui/core"
 import BaseLayout from "../../layouts/BaseLayout"
-import { useForm } from "react-hook-form"
 import useStyles from "./styles"
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup'
 import useCommonStyles from '../../styles';
 import { AppContext } from '../../App'
 import { withRouter } from 'react-router-dom'
-import { CHECKOUT_PAYMENT, CONFIRMATION, ERROR } from '../../utils/routes'
+import { CONFIRMATION, ERROR } from '../../utils/routes'
+import { URL_POST_ORDER_DETAILS } from '../../utils/constants'
 import { loadStripe } from '@stripe/stripe-js';
 import {
     CardElement,
@@ -72,7 +70,6 @@ const MyComponent = (props) => {
         event.preventDefault();
         setError("")
         setLoading(true)
-        const url_post_order_details = 'https://orderdetails.free.beeceptor.com'
         const cardElement = elements.getElement(CardElement);
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
@@ -86,43 +83,45 @@ const MyComponent = (props) => {
             // The Stripe payment was a success
             axios({
                 method: 'post',
-                url: url_post_order_details,
+                url: URL_POST_ORDER_DETAILS,
                 data: constructRequestPayload(paymentMethod)
             })
-                .then((response) => {
+                .then(() => {
                     props.history.push(CONFIRMATION)
                 })
-                .catch((err) => {
+                .catch(() => {
                     props.history.push(ERROR)
                 })
         }
     };
 
     return (
-        <Box pt={8} className={justifyCenter}>
-            <form onSubmit={handleSubmit} className={paymentForm}>
-                <CardElement options={{
-                    style: {
-                        base: {
-                            fontSize: '24px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <Box pt={8} >
+            <Paper className={justifyCenter}>
+                <form onSubmit={handleSubmit} className={paymentForm}>
+                    <CardElement options={{
+                        style: {
+                            base: {
+                                fontSize: '24px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }} />
-                <Box className={justifyCenter} mt={6}>
-                    <p>{error ?.message}</p>
-                    <Button color="primary" variant="contained" type="submit" disabled={!stripe || loading}>
-                        {loading && <CircularProgress size={25} className={buttonLoader} />}
-                        <Typography variant="h6">{`Pay ${subTotal}`}</Typography>
-                    </Button>
-                </Box>
-            </form>
+                    }} />
+                    <Box className={justifyCenter} mt={6} mb={4}>
+                        <p>{error ?.message}</p>
+                        <Button color="primary" variant="contained" type="submit" disabled={!stripe || loading}>
+                            {loading && <CircularProgress size={25} className={buttonLoader} />}
+                            <Typography variant="h6">{`Pay ${subTotal}`}</Typography>
+                        </Button>
+                    </Box>
+                </form>
+            </Paper>
         </Box>
     )
 };
@@ -134,7 +133,7 @@ const PaymentForm = (props) => {
     return (
         <BaseLayout>
             <Grid item xs={6}>
-                <Box mt={8} className={justifyCenter}><Typography variant="h4">Step 2/2: Payment Details</Typography></Box>
+                <Box mt={8} className={justifyCenter}><Typography variant="h4">Checkout: Payment Details</Typography></Box>
                 <Elements stripe={stripePromise}>
                     <MyComponent {...props} />
                 </Elements>

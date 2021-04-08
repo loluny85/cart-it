@@ -46,7 +46,7 @@ function App() {
             <ProtectedRoute path={CART} component={Cart} />
             <ProtectedRoute path={CHECKOUT_ADDRESS} component={Checkout} />
             <ProtectedRoute path={CHECKOUT_PAYMENT} component={Payment} />
-            <Route path={CONFIRMATION} component={Confirmation} />
+            <ProtectedRoute path={CONFIRMATION} component={Confirmation} />
           </Switch>
         </Router>
       </ThemeProvider>

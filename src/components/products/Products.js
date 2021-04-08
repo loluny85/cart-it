@@ -56,10 +56,11 @@ const Products = () => {
     </Box>
   ) : (
       <Grid container className={root}>
+        <Grid item xs={12} mt={8} mb={4} className={justifyCenter}><Typography variant="h4">Products</Typography></Grid>
         {products.map((product) => (
           <Grid item xs={3} key={product.id} className={justifyCenter}>
             <Card className={card}>
-              <CardMedia className={media} image={product.media.source} />
+              <CardMedia className={media} image={product.media ?.source} />
               <Box className={justifySpaceBetween}>
                 <CardContent>
                   <Typography gutterBottom variant="h6">

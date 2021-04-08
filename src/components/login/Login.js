@@ -60,8 +60,6 @@ const Login = (props) => {
       });
   }
 
-  // TODO - Make responsive
-
 
   return (
     <Grid item xs={10} className={root}>
@@ -77,12 +75,12 @@ const Login = (props) => {
               <Typography variant="h5" className={textUnderline}>SignIn</Typography>
               <Box mt={4} />
               <TextField label="email" variant="outlined" inputProps={register('email')} />
-              {errors.email ?.type === "required" && <span>email is required</span>}
-              {errors.email ?.type === "matches" && <span>Enter a valid Email</span>}
+              {errors.email ?.type === "required" && <Typography color="error">Email is required</Typography>}
+              {errors.email ?.type === "matches" && <Typography color="error">Email is not valid</Typography>}
               <Box mt={2} />
               <TextField type="password" label="Password" variant="outlined" inputProps={register('password')} />
-              {errors.password ?.type === "required" && <span>Password is required</span>}
-              {errors.password ?.type === "min" && <span>Password too short</span>}
+              {errors.password ?.type === "required" && <Typography color="error">Password is required</Typography>}
+              {errors.password ?.type === "min" && <Typography color="error">Password too short</Typography>}
               <Box mt={3} />
               <Button type="submit" size="large" color="primary" variant="contained" disabled={loading}>
                 {loading && <CircularProgress size={25} className={buttonLoader} />}

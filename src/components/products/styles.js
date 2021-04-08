@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     width: 200,
-    height: 250,
+    height: 220,
     padding: `${theme.spacing(4)}px ${theme.spacing(3)}px`,
     marginTop: theme.spacing(3),
     '&:hover': {
