@@ -24,6 +24,7 @@ const Cart = (props) => {
     justifySpaceBetween,
     justifyCenter,
     alignCenter,
+    alignCenterColumn,
     flex,
   } = useCommonStyles();
   const { root, media, card } = useStyles();
@@ -38,10 +39,20 @@ const Cart = (props) => {
   };
 
   const NoItemsCard = () => (
-    <>
-      <Typography>There are no Items in the Cart!</Typography>
-      <Link to={PRODUCTS}>Add products</Link>
-    </>
+    <Grid item xs={6} className={root}>
+      <Box mt={8} mb={4} className={justifyCenter}><Typography variant="h4">Shopping Cart</Typography></Box>
+      <Grid container className={alignCenterColumn}>
+        <Typography>There are no Items in the Cart!</Typography>
+        <Button
+          color="secondary"
+          variant="contained"
+          component={Link}
+          to={PRODUCTS}
+        >
+          Add Products
+          </Button>
+      </Grid>
+    </Grid>
   );
 
   const updateCart = (cart) => {

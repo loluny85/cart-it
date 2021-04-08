@@ -20,7 +20,7 @@ const AddressForm = (props) => {
         phone: yup.string().required().min(10),
         street: yup.string().required().min(6),
         city: yup.string().required().min(3),
-        country: yup.string().required().min(5),
+        country: yup.string().required().min(3),
         zipCode: yup.string().required().min(5).matches(/[0-9]{5}/),
     })
     const { register, handleSubmit, formState: { errors } } = useForm({

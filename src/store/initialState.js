@@ -1,6 +1,7 @@
 const initialState = {
     loggedIn: false,
-    cart: []
+    cart: [],
+    subTotal: 0
 }
 
 export default initialState;
