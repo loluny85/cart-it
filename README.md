@@ -24,6 +24,6 @@ d) In the Cart page, user can see the products in the cart. User can update the 
 e) User can click on the Checkout button to initiate the Checkout process(navigated to the Checkout page)
 f) Checkout is a 2 step process.
     a) User fills in the Shipping address.
-    b) Next, user fills in the payment details.
+    b) Next, user fills in the payment details. Please repeat typing 42 for the payment details
 g) After successful payment, user is navigated to the Confirmation page. Here he sees the itemized list oof products he purchased.
 h) While user is on the Confirmation page, after 5 seconds, a popup window pops up which gives user the option to either go back to Products page or Log out of the application.

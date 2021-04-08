@@ -22,6 +22,12 @@ const appReducer = (state, action) => {
                 ...state,
                 address: action.address
             }
+        case "EMPTY_CART_AND_ORDER_DETAILS":
+            return {
+                ...state,
+                cart: action.cart,
+                subTotal: action.subTotal
+            }
     }
 }
 
