@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     padding: `0 ${theme.spacing(3)}px`,
-    borderTop: '1px solid #eae8e8'
+    borderTop: '1px solid #eae8e7'
   }
 }));
 
